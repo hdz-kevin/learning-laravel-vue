@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agenda de Citas - Dashboard</title>
+
+  <!-- Google Fonts for modern typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Phosphor Icons: Minimalist, clean icon set matching the mockup -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <!-- Tailwind CSS CDN Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#0D6EFD",
+            "primary-hover": "#0b5ed7",
+            "bg-body": "#ffffff",
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-body text-gray-800 antialiased h-screen overflow-hidden flex">
+  <!-- Sidebar -->
+  <aside class="w-[260px] flex flex-col shrink-0 border-r border-gray-200">
+    <div class="px-4 py-6">
+      <h2 class="font-bold text-2xl text-gray-800 tracking-tight">
+        Pelisas
+      </h2>
+    </div>
+
+    <nav class="flex flex-col gap-2">
+      <a href="#"
+        class="flex items-center gap-2.5 px-4 py-2.5 bg-indigo-100 text-indigo-900 font-semibold border-b border-gray-100 transition-all">
+        <i class="ph ph-calendar-blank text-lg font-medium text-indigo-900"></i>
+        <span class="text-[15px]">Agenda</span>
+      </a>
+      <a href="#"
+        class="flex items-center gap-2.5 px-4 py-2.5 text-gray-800 font-semibold border-b border-gray-100 transition-all">
+        <i class="ph ph-user text-lg font-medium text-gray-800"></i>
+        <span class="text-[15px]">Pacientes</span>
+      </a>
+      <a href="#"
+        class="flex items-center gap-2.5 px-4 py-2.5 text-gray-800 font-semibold border-b border-gray-100 transition-all">
+        <i class="ph ph-list text-lg font-medium text-gray-800"></i>
+        <span class="text-[15px]">Servicios</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main Workspace -->
+  <main class="flex-1 bg-bg-body flex flex-col overflow-y-auto">
+    <!-- Header -->
+    <header class="bg-white px-10 py-6 border-b border-gray-200 shrink-0 shadow">
+      <h1 class="text-2xl font-bold text-gray-800">Agendar Cita</h1>
+    </header>
+
+    <!-- Content Area -->
+    <div class="px-10 py-10 flex-1 flex flex-col">
+      <div class="flex justify-start mb-8">
+        <a href="./index.html" class="bg-indigo-800 text-white px-5 py-2.5 rounded-2xl">
+          <span class="text-xl mr-1">&lt;</span>
+          Volver
+        </a>
+      </div>
+
+      <!-- Form -->
+      <div class="max-w-2xl w-full mx-auto">
+        <div class="bg-white p-8 py-6 border border-gray-200 rounded-xl shadow-md w-full">
+          <p class="text-xl font-bold text-gray-800 mb-8 border-b border-gray-200 pb-3">Agendar Cita</p>
+          
+          <form action="index.html" class="flex flex-col gap-6">
+            <div class="flex flex-col gap-2.5">
+              <label for="email" class="font-medium text-gray-800">Paciente</label>
+              <select name="patient" id="patient" class="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-lg text-[16px] focus:bg-white focus:outline-none focus:ring-[3px] focus:ring-primary/10 focus:border-primary transition-all text-gray-900 placeholder-gray-400">
+                <option value="">Seleccionar paciente</option>
+                <option value="">Paciente 1</option>
+                <option value="">Paciente 2</option>
+                <option value="">Paciente 3</option>
+                <option value="">Paciente 4</option>
+                <option value="">Paciente 5</option>
+              </select>
+            </div>
+
+            <!-- Date and Time in 2 inputs -->
+            <div class="flex flex-col gap-2.5">
+              <label for="date" class="font-medium text-gray-800 mt-2">Fecha y Hora</label>
+              <div class="flex gap-2">
+                <input type="date" id="date" name="date" required
+                  class="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-lg text-[16px] focus:bg-white focus:outline-none focus:ring-[3px] focus:ring-primary/10 focus:border-primary transition-all text-gray-900 placeholder-gray-400">
+                <input type="time" id="time" name="time" required
+                  class="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-lg text-[16px] focus:bg-white focus:outline-none focus:ring-[3px] focus:ring-primary/10 focus:border-primary transition-all text-gray-900 placeholder-gray-400">
+              </div>
+            </div>
+
+            <!-- Services, Can select 1 or more services -->
+            <div class="flex flex-col gap-2.5">
+              <label class="font-medium text-gray-800 mt-2">Servicios</label>
+              <div class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-lg flex flex-col gap-3">
+                <label class="flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" name="services[]" value="corte_unas" class="w-5 h-5 text-gray-800 bg-white border-gray-300 rounded focus:ring-gray-800 focus:ring-2 transition-all accent-gray-800">
+                  <span class="text-[16px] text-gray-900">Corte de uñas</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" name="services[]" value="tratamiento_hongos" class="w-5 h-5 text-gray-800 bg-white border-gray-300 rounded focus:ring-gray-800 focus:ring-2 transition-all accent-gray-800">
+                  <span class="text-[16px] text-gray-900">Tratamiento de hongos</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" name="services[]" value="una_encarnada" class="w-5 h-5 text-gray-800 bg-white border-gray-300 rounded focus:ring-gray-800 focus:ring-2 transition-all accent-gray-800">
+                  <span class="text-[16px] text-gray-900">Uña encarnada</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" name="services[]" value="callosidades" class="w-5 h-5 text-gray-800 bg-white border-gray-300 rounded focus:ring-gray-800 focus:ring-2 transition-all accent-gray-800">
+                  <span class="text-[16px] text-gray-900">Retiro de callosidades</span>
+                </label>
+                <label class="flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" name="services[]" value="evaluacion" class="w-5 h-5 text-gray-800 bg-white border-gray-300 rounded focus:ring-gray-800 focus:ring-2 transition-all accent-gray-800">
+                  <span class="text-[16px] text-gray-900">Evaluación general</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Submit Btn -->
+            <div class="flex justify-end gap-3 border-t border-gray-200 mt-2 pt-6">
+              <a
+                href="./index.html"
+                class="border border-gray-200 hover:bg-gray-100 text-gray-800 px-4 py-2.5 rounded-md font-medium transition-all inline-block">
+                Cancelar
+              </a>
+              <button type="submit"
+                class="bg-gray-800 hover:bg-gray-700 text-white py-2.5 px-4 rounded-md font-medium transition-all">
+                Agendar Cita
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+/* Global Styles for Animations and scrollbars */
+@keyframes fadeInSlide {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-row {
+  opacity: 0;
+  animation: fadeInSlide 0.4s ease forwards;
+}
+
+.fade-in-row:nth-child(1) { animation-delay: 0.05s; }
+.fade-in-row:nth-child(2) { animation-delay: 0.1s; }
+.fade-in-row:nth-child(3) { animation-delay: 0.15s; }
+.fade-in-row:nth-child(4) { animation-delay: 0.2s; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
