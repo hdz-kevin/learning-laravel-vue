@@ -46,7 +46,7 @@ const submit = () => {
                 <CardHeader>
                     <CardTitle class="text-lg">Agregar Nuevo Servicio</CardTitle>
                 </CardHeader>
-                
+
                 <CardContent>
                     <!-- Formulario asociado al sumbit() declarado en el <script> -->
                     <form @submit.prevent="submit" class="space-y-6">

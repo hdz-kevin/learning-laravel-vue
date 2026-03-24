@@ -11,8 +11,7 @@ Route::inertia('/', 'Welcome', [
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
 
-    Route::resource('services', ServiceController::class)
-        ->only(['index', 'create', 'store']);
+    Route::resource('services', ServiceController::class);
 });
 
 require __DIR__.'/settings.php';

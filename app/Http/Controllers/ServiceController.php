@@ -42,4 +42,14 @@ class ServiceController extends Controller
 
         return redirect()->route('services.index');
     }
+
+    /**
+     * Remove the specified service from storage.
+     */
+    public function destroy(Service $service)
+    {
+        $service->delete();
+
+        return redirect()->route('services.index');
+    }
 }

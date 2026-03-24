@@ -30,7 +30,18 @@ const props = defineProps<{
     services: Service[];
 }>();
 
-console.log(props.services);
+
+/**
+ * Delete a service with Inertia
+ */
+const deleteService = (id: number) => {
+    if (confirm('¿Estás seguro de que deseas eliminar este servicio?')) {
+        // preserveScroll mantiene la pantalla en la misma posición al recargar
+        router.delete(`/services/${id}`, {
+            preserveScroll: true,
+        });
+    }
+};
 
 </script>
 
@@ -94,6 +105,7 @@ console.log(props.services);
                                         variant="ghost"
                                         size="icon-sm"
                                         class="text-destructive hover:text-destructive"
+                                        @click="deleteService(service.id)"
                                     >
                                         <Trash2 class="size-4" />
                                     </Button>
