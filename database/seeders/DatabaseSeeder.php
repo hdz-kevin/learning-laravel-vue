@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory()->create([
-            'name'  => 'Admin',
-            'email' => 'admin@podologia.com',
+            'name'  => 'Test',
+            'email' => 'test@test.com',
         ]);
 
         // Order matters: independent ones first, then those that depend on them

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-vue-next';
+import { BookOpen, CalendarDays, FolderGit2, LayoutGrid, List, Users } from 'lucide-vue-next';
 import AppLogo from '@/components/AppLogo.vue';
 import NavFooter from '@/components/NavFooter.vue';
 import NavMain from '@/components/NavMain.vue';
@@ -14,14 +14,29 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard } from '@/routes';
+
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
-        href: dashboard(),
+        href: '/dashboard',
         icon: LayoutGrid,
+    },
+    {
+        title: 'Citas',
+        href: '/appointments',
+        icon: CalendarDays,
+    },
+    {
+        title: 'Pacientes',
+        href: '/patients',
+        icon: Users,
+    },
+    {
+        title: 'Servicios',
+        href: '/services',
+        icon: List,
     },
 ];
 
@@ -45,7 +60,7 @@ const footerNavItems: NavItem[] = [
             <SidebarMenu>
                 <SidebarMenuItem>
                     <SidebarMenuButton size="lg" as-child>
-                        <Link :href="dashboard()">
+                        <Link href="/dashboard">
                             <AppLogo />
                         </Link>
                     </SidebarMenuButton>
