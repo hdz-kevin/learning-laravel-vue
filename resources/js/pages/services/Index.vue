@@ -39,7 +39,6 @@ console.log(props.services);
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-6 p-8">
-            <!-- Header con título y botón de nuevo servicio -->
             <div class="flex items-center justify-between">
                 <h1 class="text-2xl font-bold tracking-tight">Servicios</h1>
                 <Button as-child>
@@ -50,7 +49,7 @@ console.log(props.services);
                 </Button>
             </div>
 
-            <!-- Tabla de servicios -->
+            <!-- Services Table -->
             <div class="overflow-hidden rounded-lg border">
                 <table class="w-full text-left text-sm">
                     <thead class="border-b bg-muted/50">
