@@ -3,7 +3,6 @@ import { Head, Link, router } from '@inertiajs/vue3';
 import { Pencil, Plus, Trash2 } from 'lucide-vue-next';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import type { BreadcrumbItem, Service } from '@/types';
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -22,9 +21,8 @@ const breadcrumbs: BreadcrumbItem[] = [
  * Con TypeScript usamos genéricos <> para definir el tipo exacto:
  *   defineProps<{ services: Service[] }>()
  *
- * Esto le dice a Vue: "este componente recibe una prop 'services'
- * que es un array de objetos Service". Si Laravel envía algo diferente,
- * TypeScript te avisará.
+ * Esto le dice a Vue: "este componente recibe una prop 'services' que es un array de objetos Service".
+ * Si Laravel envía algo diferente, TypeScript te avisará.
  */
 const props = defineProps<{
     services: Service[];

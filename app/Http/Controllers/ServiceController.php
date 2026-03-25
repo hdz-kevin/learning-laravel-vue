@@ -24,7 +24,7 @@ class ServiceController extends Controller
      */
     public function create(): Response
     {
-        // En Inertia solo mandamos renderizar la vista, los datos iniciales los maneja Vue
+        // In Inertia we only send the view to render, Vue handles the initial data
         return Inertia::render('services/Create');
     }
 
@@ -39,6 +39,32 @@ class ServiceController extends Controller
         ]);
 
         Service::create($validated);
+
+        return redirect()->route('services.index');
+    }
+
+    /**
+     * Show the form for editing the specified service.
+     */
+    public function edit(Service $service): Response
+    {
+        // Laravel automatically finds the service with the ID in the URL
+        return Inertia::render('services/Edit', [
+            'service' => $service,
+        ]);
+    }
+
+    /**
+     * Update the specified service in storage.
+     */
+    public function update(Request $request, Service $service)
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'price' => ['required', 'numeric', 'min:0'],
+        ]);
+
+        $service->update($validated);
 
         return redirect()->route('services.index');
     }

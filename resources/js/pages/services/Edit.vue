@@ -1,49 +1,54 @@
 <script setup lang="ts">
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import AppLayout from '@/layouts/AppLayout.vue';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardTitle, CardHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import InputError from '@/components/InputError.vue';
-import type { BreadcrumbItem } from '@/types';
+import type { BreadcrumbItem, Service } from '@/types';
+
+/**
+ * Recibimos el "service" que Laravel nos mandó desde ServiceController@edit.
+ * Como lo definimos así de claro, TypeScript sabe que "props.service"
+ * tiene .id, .name y .price.
+ */
+const props = defineProps<{
+    service: Service;
+}>();
 
 const breadcrumbs: BreadcrumbItem[] = [
     { title: 'Servicios', href: '/services' },
-    { title: 'Nuevo Servicio', href: '/services/create' },
+    { title: 'Editar servicio', href: `/services/${props.service.id}/edit` },
 ];
 
 /**
- * useForm:
- * Declaramos los campos del formulario.
- * - name será string
- * - price será string para manejar el input type="number" sin problemas (Laravel convierte a float)
+ * Inicializamos el formulario con los DATOS ACTUALES del servicio.
  */
 const form = useForm({
-    name: '',
-    price: '',
+    name: props.service.name,
+    price: props.service.price,
 });
 
 /**
- * Método que ejecuta el envío.
- * Usa `form.post` para enviar a la ruta /services (correspondiente al store() del controller)
+ * Al guardar, enviamos los datos modificados mediante PUT 
+ * a la ruta de actualización (/services/id).
  */
 const submit = () => {
-    form.post('/services', {
-        // preserveScroll mantiene la posición de la página aunque haya error de validación
+    form.put(`/services/${props.service.id}`, {
         preserveScroll: true,
     });
 };
 </script>
 
 <template>
-    <Head title="Nuevo Servicio" />
+    <Head :title="`Editar Servicio: ${props.service.name}`" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex flex-1 flex-col items-center justify-center gap-6 p-8">
             <Card class="w-full max-w-xl">
                 <CardHeader>
-                    <CardTitle class="text-lg">Agregar Nuevo Servicio</CardTitle>
+                    <CardTitle class="text-lg">Editar Servicio</CardTitle>
                 </CardHeader>
 
                 <CardContent>
@@ -55,11 +60,9 @@ const submit = () => {
                                 id="name"
                                 v-model="form.name"
                                 type="text"
-                                placeholder="Ej: Tratamiento de pie de atleta"
                                 autofocus
                                 class="px-3 py-5"
                             />
-                            <!-- Muestra el error de validación si Larvel lo devuelve ($request->validate) -->
                             <InputError :message="form.errors.name" />
                         </div>
 
@@ -72,7 +75,6 @@ const submit = () => {
                                     id="price"
                                     v-model="form.price"
                                     type="number"
-                                    placeholder="400"
                                     class="px-3 py-5 pl-7"
                                 />
                             </div>
@@ -85,9 +87,9 @@ const submit = () => {
                                 <Link href="/services">Cancelar</Link>
                             </Button>
                             
-                            <!-- form.processing disables the button while Laravel responds -->
+                            <!-- form.processing deshabilita mientras se envía y muestra que está cargando -->
                             <Button type="submit" :disabled="form.processing">
-                                Guardar Servicio
+                                Actualizar Servicio
                             </Button>
                         </div>
                     </form>
