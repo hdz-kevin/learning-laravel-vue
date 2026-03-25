@@ -13,7 +13,7 @@ return new class extends Migration
             $table->foreignId('patient_id')
                   ->constrained('patients')
                   ->onUpdate('cascade')
-                  ->onDelete('restrict');
+                  ->onDelete('cascade');
             $table->date('date');
             $table->time('time');
             $table->integer('total_price');

@@ -10,3 +10,10 @@ export type Service = {
     name: string;
     price: number;
 };
+
+export type Patient = {
+    id: number;
+    name: string;
+    phone: string;
+    sex: string;
+};

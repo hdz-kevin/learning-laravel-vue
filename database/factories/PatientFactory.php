@@ -11,10 +11,12 @@ class PatientFactory extends Factory
 {
     public function definition(): array
     {
+        $sex = fake()->randomElement(['male', 'female']);
+        
         return [
-            'name'  => fake()->name(),
+            'name'  => fake()->name($sex),
             'phone' => fake()->phoneNumber(),
-            'sex'   => fake()->randomElement(['M', 'F']),
+            'sex'   => $sex,
         ];
     }
 }

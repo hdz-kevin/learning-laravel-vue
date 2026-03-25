@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone');
-            $table->string('sex'); // 'M' | 'F'
+            $table->string('sex'); // 'male' | 'female'
             $table->timestamps();
         });
     }
