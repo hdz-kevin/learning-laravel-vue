@@ -28,7 +28,6 @@ const props = defineProps<{
     services: Service[];
 }>();
 
-
 /**
  * Delete a service with Inertia
  */
@@ -50,17 +49,17 @@ const deleteService = (id: number) => {
         <div class="flex h-full flex-1 flex-col gap-6 p-8">
             <div class="flex items-center justify-between">
                 <h1 class="text-2xl font-bold tracking-tight">Servicios</h1>
-                <Button as-child>
+                <Button size="lg" as-child>
                     <Link href="/services/create">
-                        <Plus class="size-4" />
+                        <Plus class="size-4.5" />
                         Nuevo Servicio
                     </Link>
                 </Button>
             </div>
 
             <!-- Services Table -->
-            <div class="overflow-hidden rounded-lg border">
-                <table class="w-full text-left text-sm">
+            <div class="overflow-hidden rounded-lg border mt-1">
+                <table class="w-full text-left">
                     <thead class="border-b bg-muted/50">
                         <tr>
                             <th class="px-6 py-3 font-medium text-muted-foreground">
@@ -80,11 +79,11 @@ const deleteService = (id: number) => {
                             :key="service.id"
                             class="border-b transition-colors hover:bg-muted/50"
                         >
-                            <td class="px-6 py-4 font-medium">
+                            <td class="px-6 py-4 font-medium text-gray-800">
                                 {{ service.name }}
                             </td>
                             <td class="px-6 py-4">
-                                <p class="text-base text-green-700 font-medium">
+                                <p class="text-green-700 font-medium">
                                     ${{ service.price }}
                                 </p>
                             </td>
@@ -92,20 +91,20 @@ const deleteService = (id: number) => {
                                 <div class="flex justify-end gap-1">
                                     <Button
                                         variant="ghost"
-                                        size="icon-sm"
+                                        size="default"
                                         as-child
                                     >
                                         <Link :href="`/services/${service.id}/edit`">
-                                            <Pencil class="size-4" />
+                                            <Pencil class="size-4.5" />
                                         </Link>
                                     </Button>
                                     <Button
                                         variant="ghost"
-                                        size="icon-sm"
+                                        size="default"
                                         class="text-destructive hover:text-destructive"
                                         @click="deleteService(service.id)"
                                     >
-                                        <Trash2 class="size-4" />
+                                        <Trash2 class="size-4.5" />
                                     </Button>
                                 </div>
                             </td>

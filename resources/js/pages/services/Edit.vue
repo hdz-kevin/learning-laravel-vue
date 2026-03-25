@@ -83,12 +83,12 @@ const submit = () => {
 
                         <!-- Actions -->
                         <div class="flex items-center justify-end gap-4">
-                            <Button variant="outline" as-child>
+                            <Button variant="outline" size="lg" as-child>
                                 <Link href="/services">Cancelar</Link>
                             </Button>
                             
                             <!-- form.processing deshabilita mientras se envía y muestra que está cargando -->
-                            <Button type="submit" :disabled="form.processing">
+                            <Button type="submit" size="lg" :disabled="form.processing">
                                 Actualizar Servicio
                             </Button>
                         </div>

@@ -81,12 +81,12 @@ const submit = () => {
 
                         <!-- Actions -->
                         <div class="flex items-center justify-end gap-4">
-                            <Button variant="outline" as-child>
+                            <Button variant="outline" size="lg" as-child>
                                 <Link href="/services">Cancelar</Link>
                             </Button>
                             
                             <!-- form.processing disables the button while Laravel responds -->
-                            <Button type="submit" :disabled="form.processing">
+                            <Button type="submit" size="lg" :disabled="form.processing">
                                 Guardar Servicio
                             </Button>
                         </div>

@@ -1,14 +1,12 @@
 /**
- * Tipos para los modelos del sistema de citas de podología.
+ * Types for the podiatry appointment system models.
  *
- * Cada "type" aquí representa la forma de los datos que Laravel
- * envía al frontend a través de Inertia.
+ * Each "type" here represents the shape of the data that Laravel
+ * sends to the frontend through Inertia.
  */
 
 export type Service = {
     id: number;
     name: string;
     price: number;
-    created_at: string;
-    updated_at: string;
 };
