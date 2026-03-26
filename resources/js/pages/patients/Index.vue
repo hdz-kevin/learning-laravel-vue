@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Head, Link, router } from '@inertiajs/vue3';
-import { Pencil, Plus, Trash2 } from 'lucide-vue-next';
+import { Pencil, Plus, Trash2, User } from 'lucide-vue-next';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { Button } from '@/components/ui/button';
 import type { BreadcrumbItem, Patient } from '@/types';
@@ -67,7 +67,10 @@ const deletePatient = (id: number) => {
                             class="border-b transition-colors hover:bg-muted/50"
                         >
                             <td class="px-6 py-4 font-medium text-gray-800">
-                                {{ patient.name }}
+                                <div class="flex items-center gap-2">
+                                    <User class="size-5 shrink-0 text-gray-600" />
+                                    <span class="font-medium">{{ patient.name }}</span>
+                                </div>
                             </td>
                             <td class="px-6 py-4 font-medium text-gray-700">
                                 {{ patient.phone }}
