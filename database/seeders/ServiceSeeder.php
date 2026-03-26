@@ -14,9 +14,7 @@ class ServiceSeeder extends Seeder
             ['name' => 'Corte de uñas especial',       'price' => 150],
             ['name' => 'Tratamiento de hongos',        'price' => 250],
             ['name' => 'Extracción de uña encarnada',  'price' => 400],
-            ['name' => 'Plantillas ortopédicas',       'price' => 800],
             ['name' => 'Tratamiento de callos',        'price' => 200],
-            ['name' => 'Limpieza de pies',             'price' => 180],
         ];
 
         foreach ($services as $service) {
