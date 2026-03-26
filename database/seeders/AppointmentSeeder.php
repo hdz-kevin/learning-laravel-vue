@@ -15,13 +15,13 @@ class AppointmentSeeder extends Seeder
         $services = Service::all();
 
         $patients->each(function (Patient $patient) use ($services) {
-            $appointments = Appointment::factory(2)->create([
+            $appointment = Appointment::factory()->create([
                 'patient_id'  => $patient->id,
                 'total_price' => 0,
             ]);
 
-            $appointments->each(function (Appointment $appointment) use ($services) {
-                $selectedServices = $services->random(rand(1, 3));
+            // $appointments->each(function (Appointment $appointment) use ($services) {
+                $selectedServices = $services->random(rand(1, 2));
 
                 $appointment->services()->attach($selectedServices->pluck('id'));
 
@@ -29,7 +29,7 @@ class AppointmentSeeder extends Seeder
                 $appointment->update([
                     'total_price' => $selectedServices->sum('price'),
                 ]);
-            });
+            // });
         });
     }
 }
