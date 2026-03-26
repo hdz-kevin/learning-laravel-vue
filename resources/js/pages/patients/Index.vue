@@ -3,7 +3,7 @@ import { Head, Link, router } from '@inertiajs/vue3';
 import { Pencil, Plus, Trash2 } from 'lucide-vue-next';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { Button } from '@/components/ui/button';
-import type { BreadcrumbItem, Patient, Service } from '@/types';
+import type { BreadcrumbItem, Patient } from '@/types';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -82,9 +82,7 @@ const deletePatient = (id: number) => {
                                         size="default"
                                         as-child
                                     >
-                                        <Link
-                                            :href="`/patients/${patient.id}/edit`"
-                                        >
+                                        <Link :href="`/patients/${patient.id}/edit`">
                                             <Pencil class="size-4.5" />
                                         </Link>
                                     </Button>

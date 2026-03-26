@@ -43,6 +43,32 @@ class PatientController extends Controller
     }
 
     /**
+     * Show the form for editing the specified patient.
+     */
+    public function edit(Patient $patient)
+    {
+        return Inertia::render('patients/Edit', [
+            'patient' => $patient,
+        ]);
+    }
+
+    /**
+     * Update the specified patient in database.
+     */
+    public function update(Request $request, Patient $patient)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:15',
+            'sex' => 'required|in:male,female',
+        ]);
+
+        $patient->update($validated);
+
+        return redirect()->route('patients.index');
+    }
+
+    /**
      * Remove the specified patient from database.
      */
     public function destroy(Patient $patient)
