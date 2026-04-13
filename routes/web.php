@@ -11,7 +11,9 @@ Route::inertia('/', 'Welcome', [
 ])->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::inertia('dashboard', 'Dashboard')->name('dashboard');
+    // Route::inertia('dashboard', 'Dashboard')->name('dashboard');
+    Route::get('/dashboard', fn () => redirect('appointments'));
+    Route::get('/', fn () => redirect('appointments'));
 
     Route::resource('services', ServiceController::class);
 
