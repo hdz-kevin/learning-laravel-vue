@@ -11,7 +11,6 @@ Route::inertia('/', 'Welcome', [
 ])->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    // Route::inertia('dashboard', 'Dashboard')->name('dashboard');
     Route::get('/dashboard', fn () => redirect('appointments'));
     Route::get('/', fn () => redirect('appointments'));
 
@@ -26,7 +25,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
     Route::get('/appointments/create', [AppointmentController::class, 'create'])->name('appointments.create');
+    Route::get('/appointments/{appointment}/edit', [AppointmentController::class, 'edit'])->name('appointments.edit');
     Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
+    Route::put('/appointments/{appointment}', [AppointmentController::class, 'update'])->name('appointments.update');
 });
 
 require __DIR__.'/settings.php';

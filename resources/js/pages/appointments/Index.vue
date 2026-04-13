@@ -4,7 +4,7 @@ import type { Appointment, BreadcrumbItem } from '@/types';
 import { Head, Link } from '@inertiajs/vue3';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { CalendarDays, Clock, Plus, User } from 'lucide-vue-next';
+import { CalendarDays, Clock, Plus, User, Pencil } from 'lucide-vue-next';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -66,6 +66,7 @@ const formatTime = (timeStr: string): string => {
                             <th class="px-6 py-3 font-medium text-gray-600">Fecha y Hora</th>
                             <th class="px-6 py-3 font-medium text-gray-600">Servicios</th>
                             <th class="px-6 py-3 font-medium text-gray-600">Total</th>
+                            <th class="px-6 py-3 text-right font-medium text-gray-600">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,7 +75,7 @@ const formatTime = (timeStr: string): string => {
                             :key="appointment.id"
                             class="border-b transition-colors hover:bg-muted/50"
                         >
-                            <!-- Columna Paciente -->
+                            <!-- Paciente -->
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-2">
                                     <User class="size-5 shrink-0 text-gray-600" />
@@ -83,7 +84,7 @@ const formatTime = (timeStr: string): string => {
                                 </div>
                             </td>
 
-                            <!-- Columna Fecha y Hora -->
+                            <!-- Fecha y Hora -->
                             <td class="px-6 py-4">
                                 <div class="flex flex-col gap-2">
                                     <div class="flex items-center gap-1.5 text-gray-800">
@@ -97,7 +98,7 @@ const formatTime = (timeStr: string): string => {
                                 </div>
                             </td>
 
-                            <!-- Columna Servicios (array de badges) -->
+                            <!-- Servicios (array de badges) -->
                             <td class="px-6 py-4">
                                 <div class="flex flex-wrap gap-1">
                                     <!--
@@ -115,16 +116,31 @@ const formatTime = (timeStr: string): string => {
                                 </div>
                             </td>
 
-                            <!-- Columna Total -->
+                            <!-- Total -->
                             <td class="px-6 py-4 font-medium text-green-700">
                                 ${{ appointment.total_price }}
+                            </td>
+
+                            <!-- Acciones -->
+                            <td class="px-6 py-4 text-right">
+                                <div class="flex justify-end gap-1">
+                                    <Button
+                                        variant="ghost"
+                                        size="default"
+                                        as-child
+                                    >
+                                        <Link :href="`/appointments/${appointment.id}/edit`">
+                                            <Pencil class="size-4.5" />
+                                        </Link>
+                                    </Button>
+                                </div>
                             </td>
                         </tr>
 
                         <!-- Estado vacío -->
                         <tr v-if="appointments.length === 0">
                             <td
-                                colspan="4"
+                                colspan="5"
                                 class="px-6 py-12 text-center text-muted-foreground"
                             >
                                 No hay citas registradas aún.
