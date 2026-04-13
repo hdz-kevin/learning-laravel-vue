@@ -16,7 +16,7 @@ class AppointmentController extends Controller
     public function index()
     {
         return Inertia::render('appointments/Index', [
-            'appointments' => Appointment::with('patient', 'services')->latest()->get(),
+            'appointments' => Appointment::with('patient', 'services')->orderBy('date')->get(),
         ]);
     }
 
