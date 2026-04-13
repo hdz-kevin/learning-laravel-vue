@@ -18,8 +18,8 @@ defineProps<{
 }>();
 
 const formatDate = (dateStr: string): string => {
-    // Al agregar 'T00:00:00' forzamos que la fecha sea local y no UTC
-    // (sin esto el navegador puede mostrar un día antes por el timezone)
+    // Adding 'T00:00:00' forces the date to be local and not UTC
+    // (without this, the browser may show a day earlier due to the timezone)
     const formatted = new Date(`${dateStr}T00:00:00`).toLocaleDateString('es-MX', {
         weekday: 'long',
         day: 'numeric',

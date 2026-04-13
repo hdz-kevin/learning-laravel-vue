@@ -110,7 +110,7 @@ const submit = () => {
                                 size="lg"
                                 :disabled="form.processing"
                             >
-                                Actualizar Paciente
+                                Guardar Cambios
                             </Button>
                         </div>
                     </form>

@@ -80,7 +80,7 @@ const submit = () => {
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex flex-1 flex-col items-center justify-center gap-6 p-8">
-            <Card class="w-full max-w-xl">
+            <Card class="w-full max-w-2xl">
                 <CardHeader>
                     <CardTitle class="text-lg">Agendar Nueva Cita</CardTitle>
                 </CardHeader>

@@ -89,7 +89,7 @@ const submit = () => {
                             
                             <!-- form.processing deshabilita mientras se envía y muestra que está cargando -->
                             <Button type="submit" size="lg" :disabled="form.processing">
-                                Actualizar Servicio
+                                Guardar Cambios
                             </Button>
                         </div>
                     </form>
